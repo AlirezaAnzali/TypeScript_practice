@@ -10,8 +10,8 @@ const person: {
     role: [2, "author"]
 }
 
-person.role.push('admin');
-person.role[1] = 10;
+// person.role.push('admin');
+// person.role[1] = 10;
 
 let favoriteActivities: string[];
 favoriteActivities = ["Sports"];
