@@ -1,49 +1,15 @@
-// const person: {
-//     name: string;
-//     age: number;
-//     hobbies: string[];
-//     role: [number, string]
-// } = {
-//     name: "Alireza",
-//     age: 35,
-//     hobbies: ["Sports", "Cooking"],
-//     role: [2, "author"]
-// }
-
-
-enum Role {ADMIN, READ_ONLY, AUTHOR}; 
-
-const person = {
-  name: "Alireza",
-  age: 35,
-  hobbies: ["Sports", "Cooking"],
-  role: Role.AUTHOR,
-};
-
-let favoriteActivities: string[];
-favoriteActivities = ["Sports"];
-
-console.log(person.name);
-
-for (const hobby of person.hobbies) {
-    console.log(hobby.toUpperCase());
+function combine(input1: number | string, input2: number | string) {
+  let result;
+  if (typeof input1 === "number" && typeof input2 === "number" ) {
+    result = input1 + input2;
+  } else {
+    result = input1.toString() + input2.toString();
+  }
+  return result;
 }
 
+const combinedAges = combine(35, 36);
+console.log(combinedAges);
 
-// const product:{
-//   id: string;
-//   price: number;
-//   tags: string[];
-//   details: {
-//     title: string;
-//     description: string;
-//   }
-// } = {
-//   id: "abc1",
-//   price: 12.99,
-//   tags: ["great-offer", "hot-and-new"],
-//   details: {
-//     title: "Red Carpet",
-//     description: "A great carpet - almost brand-new!",
-//   },
-// };
+const combinedNames = combine("Ali", "Reza");
+console.log(combinedNames);
