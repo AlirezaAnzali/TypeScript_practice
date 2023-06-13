@@ -1,7 +1,7 @@
 class Department {
   //   public name: string;
   //   private readonly id: string;
-  private employees: string[] = [];
+  protected employees: string[] = [];
 
   constructor(public name: string, private readonly id: string) {
     // this.name = name;
@@ -36,6 +36,13 @@ class AccountingDepartment extends Department {
     super("Accounting", id);
   }
 
+  addEmployee(employee: string) {
+    if (employee === "Ali") {
+      return;
+    }
+    this.employees.push(employee);
+  }
+
   addReport(text: string) {
     this.reports.push(text);
   }
@@ -68,15 +75,15 @@ class AccountingDepartment extends Department {
 // }
 
 
-const accounting = new Department("Accounting", "d1");
+// const accounting = new Department("Accounting", "d1");
 
-accounting.addEmployee("Alireza");
-accounting.addEmployee("Max");
+// accounting.addEmployee("Alireza");
+// accounting.addEmployee("Max");
 
-// accounting.employees[2]= "Sara";  //Property 'employees' is private and only accessible within class 'Department'
+// // accounting.employees[2]= "Sara";  //Property 'employees' is private and only accessible within class 'Department'
 
-accounting.describe();
-accounting.printEmployeeInformation();
+// accounting.describe();
+// accounting.printEmployeeInformation();
 
 // const accountingCopy = {
 //     name: "DUMMY",
@@ -92,3 +99,6 @@ const accountingDepartment = new AccountingDepartment("d1", ["spring 2023 quarte
 console.log(accountingDepartment);
 accountingDepartment.addReport("Something went wrong");
 accountingDepartment.printReport();
+accountingDepartment.addEmployee("Ali"); //because of if statement, will not be added.
+accountingDepartment.addEmployee("Max");
+accountingDepartment.printEmployeeInformation();
