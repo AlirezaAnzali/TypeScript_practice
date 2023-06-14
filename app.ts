@@ -14,9 +14,10 @@
 
 // user1.greet("Hi there, I am");
 
-
-interface Greetable {
-  name: string;
+interface Named {
+  readonly name: string;
+}
+interface Greetable extends Named {
   greet(phrase: string): void;
 }
 
@@ -40,4 +41,7 @@ let user1: Greetable;
 
 user1 = new Person("Ali");
 
+// user1.name = "Eli"; //Cannot assign to 'name' because it is a read-only property.
+
 user1.greet("Hi there, I am");
+console.log(user1);
