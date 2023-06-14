@@ -32,8 +32,26 @@ class ITDepartment extends Department {
 }
 
 class AccountingDepartment extends Department {
+
+  private lastReport: string;
+
+  get mostRecentReport() {
+    if (this.lastReport) {
+      return this.lastReport;
+    }
+    throw new Error("No Report Found.");
+  }
+
+  set mostRecentReport(value: string) {
+    if (!value) {
+      throw new Error("Please pass in a valid value!")
+    }
+    this.addReport(value);
+  }
+
   constructor(id: string, private reports: string[]) {
     super("Accounting", id);
+    this.lastReport = reports[0];
   }
 
   addEmployee(employee: string) {
@@ -45,6 +63,7 @@ class AccountingDepartment extends Department {
 
   addReport(text: string) {
     this.reports.push(text);
+    this.lastReport = text;
   }
 
   printReport() {
@@ -93,10 +112,12 @@ class AccountingDepartment extends Department {
 // accountingCopy.describe();
 
 const itDepartment = new ITDepartment("d2", ["Ali"]);
-console.log(itDepartment);
+// console.log(itDepartment);
 
 const accountingDepartment = new AccountingDepartment("d1", ["spring 2023 quarter report", "summer 2023 quarter report"]);
-console.log(accountingDepartment);
+// console.log(accountingDepartment);
+accountingDepartment.mostRecentReport ="Annual Report";
+console.log(accountingDepartment.mostRecentReport);
 accountingDepartment.addReport("Something went wrong");
 accountingDepartment.printReport();
 accountingDepartment.addEmployee("Ali"); //because of if statement, will not be added.
