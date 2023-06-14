@@ -1,16 +1,20 @@
-class Department {
+abstract class Department {
   //   public name: string;
   //   private readonly id: string;
+
+  static fiscalYear = 2023;
   protected employees: string[] = [];
 
-  constructor(public name: string, private readonly id: string) {
+  constructor(public name: string, protected readonly id: string) {
     // this.name = name;
     // this.id = id;
   }
 
-  describe(this: Department) {
-    console.log(`Department (${this.id}): ${this.name}`);
+  static createEmployee(name: string) {
+    return { name: name };
   }
+
+  abstract describe(this: Department): void;
 
   addEmployee(employee: string) {
     // maybe we want some validation here
@@ -24,11 +28,15 @@ class Department {
 }
 
 class ITDepartment extends Department {
-    // admins: string[];
-    constructor(id: string, public admins: string[]) {
-        super("IT", id);
-        // this.admins = admins;
-    }
+  // admins: string[];
+  constructor(id: string, public admins: string[]) {
+    super("IT", id);
+    // this.admins = admins;
+  }
+
+  describe() {
+    console.log("IT Department - ID: " + this.id);
+  }
 }
 
 class AccountingDepartment extends Department {
@@ -52,6 +60,10 @@ class AccountingDepartment extends Department {
   constructor(id: string, private reports: string[]) {
     super("Accounting", id);
     this.lastReport = reports[0];
+  }
+
+  describe (){
+    console.log("Accounting Department - ID: " + this.id)
   }
 
   addEmployee(employee: string) {
@@ -111,6 +123,9 @@ class AccountingDepartment extends Department {
 
 // accountingCopy.describe();
 
+const employee1 = Department.createEmployee("Eli");
+console.log(employee1, Department.fiscalYear);
+
 const itDepartment = new ITDepartment("d2", ["Ali"]);
 // console.log(itDepartment);
 
@@ -118,8 +133,9 @@ const accountingDepartment = new AccountingDepartment("d1", ["spring 2023 quarte
 // console.log(accountingDepartment);
 accountingDepartment.mostRecentReport ="Annual Report";
 console.log(accountingDepartment.mostRecentReport);
-accountingDepartment.addReport("Something went wrong");
-accountingDepartment.printReport();
-accountingDepartment.addEmployee("Ali"); //because of if statement, will not be added.
-accountingDepartment.addEmployee("Max");
-accountingDepartment.printEmployeeInformation();
+// accountingDepartment.addReport("Something went wrong");
+// accountingDepartment.printReport();
+// accountingDepartment.addEmployee("Ali"); //because of if statement, will not be added.
+// accountingDepartment.addEmployee("Max");
+// accountingDepartment.printEmployeeInformation();
+accountingDepartment.describe();
