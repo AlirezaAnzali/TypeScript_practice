@@ -24,6 +24,9 @@ type Numeric = number | boolean;
 
 type Universal = Combinable & Numeric; //intersection-types
 
+
+function add(a:string, b:string): string; //function overload: tell if both was string, result is string
+function add(a:number, b:number): number; //function overload
 function add(a: Combinable, b:Combinable) {
     if (typeof a === "string" || typeof b === "string") //type-guards
     {
@@ -83,6 +86,8 @@ useVehicle(v2);
 
 //--------------------------------------------------------------------
 
+// discriminated union: 1 common property in all union types
+
 interface Bird {
     type: "bird";
     flyingSpeed: number;
@@ -109,3 +114,6 @@ function moveAnimal (animal: Animal) {
 
 moveAnimal ({type:"bird", flyingSpeed: 10});
 moveAnimal ({type:"horse", runningSpeed: 25});
+
+//---------------------------------------------------------------------
+
