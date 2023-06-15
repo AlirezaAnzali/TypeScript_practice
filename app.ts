@@ -128,3 +128,12 @@ const fetchedUserData = {
 console.log(fetchedUserData?.job?.description); // if data exist then job exist then description
 
 //----------------------------------------------------------------------
+
+//nullish
+
+const userInput = "";
+// const storedData = userInput || "DEFAULT"; //storedData = DEFAULT
+const storedData = userInput ?? "DEFAULT"; //storedData = "": using ??, just undefined and null are falsy values.
+console.log(storedData);
+
+//-----------------------------------------------------------------------
