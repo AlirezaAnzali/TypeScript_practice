@@ -117,3 +117,14 @@ moveAnimal ({type:"horse", runningSpeed: 25});
 
 //---------------------------------------------------------------------
 
+//optional chaining
+ 
+const fetchedUserData = {
+    id: "u1",
+    name: "Ali",
+    job: { title: "CEO", description: "My Own Company"}
+};
+
+console.log(fetchedUserData?.job?.description); // if data exist then job exist then description
+
+//----------------------------------------------------------------------
