@@ -36,7 +36,8 @@ type UnknownEmployee  = Employee | Admin; //union
 
 function printEmployeeInformation (emp: UnknownEmployee) {
     console.log("Name : " + emp.name); // no problem, because both Employee and Admin have name property, but we should define 2 type guards for proceed:
-    if ("privileges" in emp) {
+    if ("privileges" in emp) //it is good but always has the possibility of typo in string
+    {
         console.log("Privileges : "+ emp.privileges);
     }
     if ("startDate" in emp) {
@@ -47,6 +48,7 @@ function printEmployeeInformation (emp: UnknownEmployee) {
 printEmployeeInformation(e1);
 // printEmployeeInformation({name:"Eli", startDate: new Date()});
 
+//---------------------------------------------------------------------------
 
 class Car {
     drive() {
@@ -79,5 +81,31 @@ function useVehicle (vehicle: Vehicle) {
 useVehicle(v1);
 useVehicle(v2);
 
+//--------------------------------------------------------------------
 
+interface Bird {
+    type: "bird";
+    flyingSpeed: number;
+}
 
+interface Horse {
+    type: "horse";
+    runningSpeed: number;
+}
+
+type Animal = Bird | Horse;
+
+function moveAnimal (animal: Animal) {
+    let speed;
+    switch (animal.type) {
+        case "bird":
+            speed = animal.flyingSpeed;
+            break;
+        case "horse":
+            speed = animal.runningSpeed;
+    }
+    console.log("This is a "+ animal.type + " and is moving at Speed : "+ speed);
+}
+
+moveAnimal ({type:"bird", flyingSpeed: 10});
+moveAnimal ({type:"horse", runningSpeed: 25});
