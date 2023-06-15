@@ -107,7 +107,7 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
   "exclude": [
-    "basics.ts", "functions.ts", "objs-arrays-enums.ts", "union-aliases.ts", "unknown-never.ts", "analytics.ts", "classes.ts"
+    "basics.ts", "functions.ts", "objs-arrays-enums.ts", "union-aliases.ts", "unknown-never.ts", "analytics.ts", "classes.ts", "interfaces.ts"
   ],
   "include": ["app.ts"]
 }
